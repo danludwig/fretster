@@ -3,7 +3,16 @@ import NeckSvg from './NeckSvg'
 
 class FirstPage extends Component {
   render() {
-    return (<NeckSvg />)
+    return (<div>
+      <h1>Example heading <span className="tag tag-primary">Badge</span></h1>
+      <button type="button" className="btn btn-primary">Primary</button>
+        <div className="alert alert-info" role="alert">
+          <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
+        </div>
+      {/*
+        */}
+      <NeckSvg />
+    </div>)
   }
 }
 
