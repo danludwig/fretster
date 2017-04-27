@@ -22,9 +22,9 @@ class About extends Component {
   render() {
     return (<div className={styles.firstPage}>
       <h2>Test second page</h2>
-      <div>Counter: { this.props.counter.counter }</div>
-      <button onClick={ this.props.increaseCounter }>Increase counter</button>
-      <button onClick={ this.props.increaseRandomAsync }>Increase async randomly</button>
+      <div>Counter: this.props.counter.counter</div>
+      <button onClick={ () => window.alert('nope') }>Increase counter</button>
+      <button onClick={ () => window.alert('nope') }>Increase async randomly</button>
       <Link to="/">Go to first</Link>
     </div>)
   }

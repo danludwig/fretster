@@ -1,12 +1,13 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: [
     'react-hot-loader/patch',
     // activate HMR for React
 
-    'webpack-dev-server/client?http://0.0.0.0:3000',
+    'webpack-dev-server/client?http://localhost:3000',
     // bundle the client for webpack-dev-server
     // and connect to the provided endpoint
 
@@ -28,7 +29,7 @@ module.exports = {
 
     path: resolve(__dirname, 'dist'),
 
-    publicPath: 'http://127.0.0.1:3000/'
+    publicPath: 'http://localhost:3000/'
     // necessary for HMR to know where to load the hot update chunks
   },
 
@@ -70,8 +71,18 @@ module.exports = {
           'css-loader?modules',
         ],
       },
-      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] }
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader']
+      },
     ],
+    loaders: [
+      { test: /bootstrap[\/\\]dist[\/\\]js[\/\\]umd[\/\\]/, loader: 'imports-loader?jQuery=jquery' },
+    ]
   },
 
   plugins: [
@@ -100,5 +111,8 @@ module.exports = {
       Util: "exports-loader?Util!bootstrap/js/dist/util",
     }),
 
+    new webpack.LoaderOptionsPlugin({
+      postcss: [autoprefixer],
+    }),
   ],
 };

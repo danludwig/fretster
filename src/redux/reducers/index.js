@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux'
-
-import counter from './counter'
+import scales from './scales'
 
 const reducers = combineReducers({
-  counter,
+  scales,
 })
 
 export default reducers

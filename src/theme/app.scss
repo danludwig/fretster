@@ -1,16 +1,14 @@
 body {
   min-height: 100vh;
-  /*
-  background-color: pink;
-  */
+  display: flex;
+  flex-direction: column;
 }
 
 #root {
-  min-height: 100vh;
-  > [data-reactroot] {
+  > * {
     min-height: 100vh;
-    flex-direction: column!important;
-    display: flex!important;
+    flex-direction: column;
+    display: flex;
   }
 }
 
