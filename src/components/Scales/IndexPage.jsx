@@ -1,98 +1,48 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { changeTonic, changeScale } from '../../redux/actions/scales'
-import { SCALE_TONICS, ENHARMONIC_IDS } from '../../constants/notes'
-import TonicNoteButton from './TonicNoteButton'
+import * as scaleActions from '../../redux/actions/scales'
+import RootNoteButton from './RootNoteButton'
+import RootNotesMenu from './RootNotesMenu'
+import Button from '../Common/Button'
+import ButtonToolbar from '../Common/ButtonToolbar'
+import Heading from '../Common/Heading'
+import Grid from '../Common/Grid'
 
-const mapStateToProps = ({ scales }) => {
-  return {
-    tonicNoteId: scales.tonicNoteId,
-    scale: scales.scale,
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeTonic: tonicNoteId => {
-      return dispatch(changeTonic(tonicNoteId))
-    },
-    changeScale: scale => {
-      return dispatch(changeScale(scale))
-    },
-  }
-}
+const mapStateToProps = ({ scales }) => (scales)
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(scaleActions, dispatch)
 
 class ScalesIndexPage extends Component {
+
   render() {
-    const tonicNote = SCALE_TONICS.find(x => x.id === this.props.tonicNoteId)
+    const { rootNoteId, isRootNotesMenuOpen, changeScaleRoot,
+      toggleRootNotesMenu, hideRootNotesMenu } = this.props
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col">
+      <Grid fluid>
+        <Grid.Row>
+          <Grid.Column>
 
-            <div className="btn-toolbar mt-3" role="toolbar">
-              <div className="btn-group mr-2" role="group" aria-label="Scale note">
-                <button type="button" className="btn btn-secondary"
-                   data-toggle="collapse" data-target="#collapseExample"
-                   aria-expanded="false" aria-controls="collapseExample">
-                  <h1 className="mb-0">
-                    { `${tonicNote.letter}` }
-                    <sup>
-                      { `${tonicNote.accidentals.join('')}` }
-                    </sup>
-                  </h1>
-                </button>
-              </div>
-              <div className="btn-group" role="group" aria-label="Scale type">
-                <button type="button" className="btn btn-secondary">
-                  <h1 className="mb-0">Major</h1>
-                </button>
-              </div>
-            </div>
+            <ButtonToolbar mt={3}>
+              <RootNoteButton rootNoteId={rootNoteId}
+                onClick={toggleRootNotesMenu} />
+              <Button context="secondary" disabled>
+                <Heading priority={1} mb={0}>
+                  Major
+                </Heading>
+              </Button>
+            </ButtonToolbar>
 
-            <div className="collapse show" id="collapseExample">
-              <div className="mt-2 card d-inline-block">
-                <div className="card-block p-3">
-                  { ENHARMONIC_IDS.map((x) =>
-                    <TonicNoteButton enharmonicId={x}
-                      onClick={this.props.changeTonic}
-                      key={`tonic_note_item_${x}`} />
-                  )}
+            <RootNotesMenu
+              show={isRootNotesMenuOpen}
+              rootNoteId={rootNoteId}
+              onHide={hideRootNotesMenu}
+              onNoteChange={changeScaleRoot}
+            />
 
-                </div>
-              </div>
-            </div>
-
-
-
-          </div>
-        </div>
-
-
-        {/*
-          <div className="row">
-            <div className="col">
-              1 of 2
-            </div>
-            <div className="col">
-              1 of 2
-            </div>
-          </div>
-        <div className="row">
-          <div className="col">
-            1 of 3
-          </div>
-          <div className="col">
-            1 of 3
-          </div>
-          <div className="col">
-            1 of 3
-          </div>
-        </div>
-        */}
-
-
-      </div>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     )
   }
 }

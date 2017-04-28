@@ -1,5 +1,16 @@
 import { createAction } from 'redux-act'
 
-export const changeTonic = createAction('scales.changeTonic', tonicNoteId => (tonicNoteId))
+export const changeScaleRoot = createAction(
+  'scales.changeScaleRoot', rootNoteId => (rootNoteId))
 
-export const changeScale = createAction('scales.changeScale', scale => (scale))
+export const changeScaleType = createAction(
+  'scales.changeScaleType', scaleTypeId => (scaleTypeId))
+
+export const showRootNotesMenu = createAction(
+  'scales.showRootNotesMenu')
+
+export const hideRootNotesMenu = createAction(
+  'scales.hideRootNotesMenu')
+
+export const toggleRootNotesMenu = createAction(
+  'scales.toggleRootNotesMenu')

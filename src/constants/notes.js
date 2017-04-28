@@ -1,106 +1,25 @@
 // sharp flat ♯ ♭
 
-export const SCALE_TONICS = [
-  {
-    id: '1.0',
-    enharmonicId: '1',
-    variationId: '0',
-    letter: 'C',
-    accidentals: [],
-  },
-  {
-    id: '2.1',
-    enharmonicId: '2',
-    variationId: '1',
-    letter: 'C',
-    accidentals: ['♯'],
-  },
-  {
-    id: '2.2',
-    enharmonicId: '2',
-    variationId: '2',
-    letter: 'D',
-    accidentals: ['♭'],
-  },
-  {
-    id: '3.0',
-    enharmonicId: '3',
-    variationId: '0',
-    letter: 'D',
-    accidentals: [],
-  },
-  {
-    id: '4.0',
-    enharmonicId: '4',
-    variationId: '0',
-    letter: 'E',
-    accidentals: ['♭'],
-  },
-  {
-    id: '5.0',
-    enharmonicId: '5',
-    variationId: '0',
-    letter: 'E',
-    accidentals: [],
-  },
-  {
-    id: '6.0',
-    enharmonicId: '6',
-    variationId: '0',
-    letter: 'F',
-    accidentals: [],
-  },
-  {
-    id: '7.1',
-    enharmonicId: '7',
-    variationId: '1',
-    letter: 'F',
-    accidentals: ['♯'],
-  },
-  {
-    id: '7.2',
-    enharmonicId: '7',
-    variationId: '2',
-    letter: 'G',
-    accidentals: ['♭'],
-  },
-  {
-    id: '8.0',
-    enharmonicId: '8',
-    variationId: '0',
-    letter: 'G',
-    accidentals: [],
-  },
-  {
-    id: '9.0',
-    enharmonicId: '9',
-    variationId: '0',
-    letter: 'A',
-    accidentals: ['♭'],
-  },
-  {
-    id: '10.0',
-    enharmonicId: '10',
-    variationId: '0',
-    letter: 'A',
-    accidentals: [],
-  },
-  {
-    id: '11.0',
-    enharmonicId: '11',
-    variationId: '0',
-    letter: 'B',
-    accidentals: ['♭'],
-  },
-  {
-    id: '12.0',
-    enharmonicId: '12',
-    variationId: '0',
-    letter: 'B',
-    accidentals: [],
-  },
-]
+const buildNote = (enharmonicId, variationId, letter, accidentals = []) => {
+  return {
+    id: `${enharmonicId}.${variationId}`,
+    enharmonicId,
+    variationId,
+    letter, accidentals,
+  }
+}
 
-export const ENHARMONIC_IDS = SCALE_TONICS.map(x => x.enharmonicId)
-  .filter((value, index, self) => self.indexOf(value) === index)
-
+export const C          = buildNote( 1, 0, 'C')
+export const C_SHARP    = buildNote( 2, 1, 'C', ['♯'])
+export const D_FLAT     = buildNote( 2, 2, 'D', ['♭'])
+export const D          = buildNote( 3, 0, 'D')
+export const E_FLAT     = buildNote( 4, 0, 'E', ['♭'])
+export const E          = buildNote( 5, 0, 'E')
+export const F          = buildNote( 6, 0, 'F')
+export const F_SHARP    = buildNote( 7, 1, 'F', ['♯'])
+export const G_FLAT     = buildNote( 7, 2, 'G', ['♭'])
+export const G          = buildNote( 8, 0, 'G')
+export const A_FLAT     = buildNote( 9, 0, 'A', ['♭'])
+export const A          = buildNote(10, 0, 'A')
+export const B_FLAT     = buildNote(11, 0, 'B', ['♭'])
+export const B          = buildNote(12, 0, 'B')
