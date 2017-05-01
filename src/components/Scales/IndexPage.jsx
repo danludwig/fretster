@@ -70,9 +70,9 @@ class ScalesIndexPage extends Component {
         </Grid.Row>
         <Grid.Row>
           { scaleNotes.map(x =>
-            <Grid.Column col="sm" py={3}
+            <Grid.Column col="sm" py={1}
               key={`scale_note_${x.interval.halfStepsFromRoot}`}>
-              <Div rounded="circle" p={2} d="inline-block" className="bg-inverse text-white"
+              <Div rounded="circle" p={2} d="inline-block" className="bg-success text-white"
                 style={{width: '50px', height: '50px'}}>
                 <Heading priority={3} mb={0} style={{lineHeight: '1.15'}} className="text-center">
                   <NoteName note={x.note} />

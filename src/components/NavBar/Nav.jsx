@@ -11,7 +11,7 @@ export default () => {
 
         <span className="navbar-toggler-icon"></span>
       </button>
-      <a href="#" className="navbar-brand">Fretster</a>
+      <a href="#" className="navbar-brand">Riffic</a>
 
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
