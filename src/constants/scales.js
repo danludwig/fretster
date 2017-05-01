@@ -17,6 +17,36 @@ export const ROOT_NOTES = [
 
 export const MAJOR = {
   id: 'Major',
+  intervals: [
+    {
+      halfStepsFromRoot: 0,
+      interval: 'Root'
+    },
+    {
+      halfStepsFromRoot: 2,
+      interval: '2nd'
+    },
+    {
+      halfStepsFromRoot: 4,
+      interval: '3rd'
+    },
+    {
+      halfStepsFromRoot: 5,
+      interval: '4th'
+    },
+    {
+      halfStepsFromRoot: 7,
+      interval: '5th'
+    },
+    {
+      halfStepsFromRoot: 9,
+      interval: '6th'
+    },
+    {
+      halfStepsFromRoot: 11,
+      interval: '7th'
+    },
+  ]
 }
 
 export const MINOR = {

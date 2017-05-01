@@ -2,7 +2,7 @@ import { createReducer } from 'redux-act'
 import * as actions from '../actions/scales'
 
 const defaultState = {
-  rootNoteId: '1.0', // C
+  rootNoteId: '1.1', // C
   scaleTypeId: 'Major',
   isRootNotesMenuOpen: false,
 }
