@@ -5,14 +5,12 @@ const defaultState = {
   rootNoteId: '1.1', // C
   scaleTypeId: 'Major',
   isRootNotesMenuOpen: false,
+  isScaleTypesMenuOpen: false,
 }
 
 const scales = createReducer({
   [actions.changeScaleRoot]: (state, rootNoteId) => ({
     ...state, rootNoteId,
-  }),
-  [actions.changeScaleType]: (state, scaleTypeId) => ({
-    ...state, scaleTypeId,
   }),
   [actions.showRootNotesMenu]: (state) => ({
     ...state, isRootNotesMenuOpen: true,
@@ -22,6 +20,18 @@ const scales = createReducer({
   }),
   [actions.toggleRootNotesMenu]: (state) => ({
     ...state, isRootNotesMenuOpen: !state.isRootNotesMenuOpen,
+  }),
+  [actions.changeScaleType]: (state, scaleTypeId) => ({
+    ...state, scaleTypeId,
+  }),
+  [actions.showScaleTypesMenu]: (state) => ({
+    ...state, isScaleTypesMenuOpen: true,
+  }),
+  [actions.hideScaleTypesMenu]: (state) => ({
+    ...state, isScaleTypesMenuOpen: false,
+  }),
+  [actions.toggleScaleTypesMenu]: (state) => ({
+    ...state, isScaleTypesMenuOpen: !state.isScaleTypesMenuOpen,
   }),
 }, defaultState);
 

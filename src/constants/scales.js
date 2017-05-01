@@ -51,6 +51,36 @@ export const MAJOR = {
 
 export const MINOR = {
   id: 'Minor',
+  intervals: [
+    {
+      halfStepsFromRoot: 0,
+      interval: 'Root'
+    },
+    {
+      halfStepsFromRoot: 2,
+      interval: '2nd'
+    },
+    {
+      halfStepsFromRoot: 3,
+      interval: 'Minor 3rd'
+    },
+    {
+      halfStepsFromRoot: 5,
+      interval: '4th'
+    },
+    {
+      halfStepsFromRoot: 7,
+      interval: '5th'
+    },
+    {
+      halfStepsFromRoot: 8,
+      interval: 'Minor 6th'
+    },
+    {
+      halfStepsFromRoot: 10,
+      interval: 'Minor 7th'
+    },
+  ]
 }
 
 export const TYPES = [

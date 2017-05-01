@@ -5,6 +5,7 @@ import * as scaleActions from '../../redux/actions/scales'
 import * as scales from '../../functions/scales'
 import RootNoteButton from './RootNoteButton'
 import RootNotesMenu from './RootNotesMenu'
+import ScaleTypesMenu from './ScaleTypesMenu'
 import NoteName from '../Notes/NoteName'
 import Grid from '../Common/Grid'
 import Button from '../Common/Button'
@@ -21,8 +22,11 @@ class ScalesIndexPage extends Component {
 
   render() {
 
-    const { rootNoteId, scaleTypeId, isRootNotesMenuOpen, changeScaleRoot,
-      toggleRootNotesMenu, hideRootNotesMenu } = this.props
+    const { rootNoteId, isRootNotesMenuOpen, changeScaleRoot,
+      toggleRootNotesMenu, hideRootNotesMenu,
+      scaleTypeId, isScaleTypesMenuOpen, changeScaleType,
+      toggleScaleTypesMenu, hideScaleTypesMenu
+    } = this.props
 
     const scaleNotes = scales.buildScale(rootNoteId, scaleTypeId)
 
@@ -34,9 +38,9 @@ class ScalesIndexPage extends Component {
             <ButtonToolbar mt={3}>
               <RootNoteButton rootNoteId={rootNoteId}
                 onClick={toggleRootNotesMenu} />
-              <Button context="secondary" disabled>
+              <Button context="secondary" onClick={() => toggleScaleTypesMenu()}>
                 <Heading priority={1} mb={0}>
-                  Major
+                  { scaleTypeId }
                 </Heading>
               </Button>
             </ButtonToolbar>
@@ -46,6 +50,13 @@ class ScalesIndexPage extends Component {
               rootNoteId={rootNoteId}
               onHide={hideRootNotesMenu}
               onNoteChange={changeScaleRoot}
+            />
+
+            <ScaleTypesMenu
+              show={isScaleTypesMenuOpen}
+              scaleTypeId={scaleTypeId}
+              onHide={hideScaleTypesMenu}
+              onScaleChange={changeScaleType}
             />
 
           </Grid.Column>
@@ -58,48 +69,17 @@ class ScalesIndexPage extends Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          <Grid.Column col="sm" py={3}>
-            <Div rounded="circle" p={4} d="inline-block" className="bg-info"
-              style={{width: '75px', height: '75px'}}>
-              <Heading priority={3} mb={0} style={{lineHeight: '0.85'}} className="text-center">
-                C
-              </Heading>
-            </Div>
-          </Grid.Column>
-          <Grid.Column col="sm" py={3}>
-            <Div rounded="circle" p={4} d="inline-block" className="bg-info"
-              style={{width: '75px', height: '75px'}}>
-              <Heading priority={3} mb={0} style={{lineHeight: '0.85'}} className="text-center">
-                D
-              </Heading>
-            </Div>
-          </Grid.Column>
-          <Grid.Column col="sm" className="text-center" py={3}>
-            E
-          </Grid.Column>
-          <Grid.Column col="sm" className="text-center" py={3}>
-            F
-          </Grid.Column>
-          <Grid.Column col="sm" className="text-center" py={3}>
-            G
-          </Grid.Column>
-          <Grid.Column col="sm" className="text-center" py={3}>
-            A
-          </Grid.Column>
-          <Grid.Column col="sm" className="text-center" py={3}>
-            B
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
-          <Grid.Column>
-            <ol>
-              { scaleNotes.map(x =>
-                <li key={x.interval.halfStepsFromRoot}>
+          { scaleNotes.map(x =>
+            <Grid.Column col="sm" py={3}
+              key={`scale_note_${x.interval.halfStepsFromRoot}`}>
+              <Div rounded="circle" p={2} d="inline-block" className="bg-inverse text-white"
+                style={{width: '50px', height: '50px'}}>
+                <Heading priority={3} mb={0} style={{lineHeight: '1.15'}} className="text-center">
                   <NoteName note={x.note} />
-                </li>
-              )}
-            </ol>
-          </Grid.Column>
+                </Heading>
+              </Div>
+            </Grid.Column>
+          )}
         </Grid.Row>
       </Grid>
     )
