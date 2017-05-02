@@ -5,7 +5,9 @@ import * as scaleActions from '../../redux/actions/scales'
 import * as scales from '../../functions/scales'
 import RootNoteButton from './RootNoteButton'
 import RootNotesMenu from './RootNotesMenu'
+import ScaleTypeButton from './ScaleTypeButton'
 import ScaleTypesMenu from './ScaleTypesMenu'
+import TriadsGridRow from './TriadsGridRow'
 import NoteName from '../Notes/NoteName'
 import Grid from '../Common/Grid'
 import Button from '../Common/Button'
@@ -34,31 +36,27 @@ class ScalesIndexPage extends Component {
       <Grid fluid>
         <Grid.Row>
           <Grid.Column>
-
-            <ButtonToolbar mt={3}>
+            <ButtonToolbar mt={3} d="inline-block">
               <RootNoteButton rootNoteId={rootNoteId}
                 onClick={toggleRootNotesMenu} />
-              <Button context="secondary" onClick={() => toggleScaleTypesMenu()}>
-                <Heading priority={1} mb={0}>
-                  { scaleTypeId }
-                </Heading>
-              </Button>
+              <ScaleTypeButton scaleTypeId={scaleTypeId}
+                onClick={toggleScaleTypesMenu} />
             </ButtonToolbar>
-
+            <Button context="primary">
+              Find scale
+            </Button>
             <RootNotesMenu
               show={isRootNotesMenuOpen}
               rootNoteId={rootNoteId}
               onHide={hideRootNotesMenu}
               onNoteChange={changeScaleRoot}
             />
-
             <ScaleTypesMenu
               show={isScaleTypesMenuOpen}
               scaleTypeId={scaleTypeId}
               onHide={hideScaleTypesMenu}
               onScaleChange={changeScaleType}
             />
-
           </Grid.Column>
         </Grid.Row>
         <Grid.Row mt={3}>
@@ -73,7 +71,7 @@ class ScalesIndexPage extends Component {
             <Grid.Column col="sm" py={1}
               key={`scale_note_${x.interval.halfStepsFromRoot}`}>
               <Div rounded="circle" p={2} d="inline-block" className="bg-success text-white"
-                style={{width: '50px', height: '50px'}}>
+                style={{width: '48px', height: '48px'}}>
                 <Heading priority={3} mb={0} style={{lineHeight: '1.15'}} className="text-center">
                   <NoteName note={x.note} />
                 </Heading>
@@ -81,6 +79,14 @@ class ScalesIndexPage extends Component {
             </Grid.Column>
           )}
         </Grid.Row>
+        <Grid.Row mt={3}>
+          <Grid.Column>
+            <Heading priority={2}>
+              Scale Triads (Chords)
+            </Heading>
+          </Grid.Column>
+        </Grid.Row>
+        <TriadsGridRow rootNoteId={rootNoteId} scaleTypeId={scaleTypeId} />
       </Grid>
     )
   }
