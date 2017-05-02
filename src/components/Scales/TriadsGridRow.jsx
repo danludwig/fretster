@@ -10,19 +10,11 @@ import Span from '../Common/Span'
 
 const TriadsGridRow = ({ rootNoteId, scaleTypeId }) => {
 
-  const scaleNotes = scales.buildScale(rootNoteId, scaleTypeId)
-  const triadsNotes = []
-  for (let noteIndex in scaleNotes) {
-    const triadNotes = triads.findTriadNotesForScaleNote(scaleNotes, noteIndex)
-    const triadType = triads.findTriadTypeForScaleNotes(triadNotes)
-    triadsNotes.push({
-      triadType, notes: triadNotes, rootNote: triadNotes[0]
-    })
-  }
+  const scaleTriads = triads.buildTriads(rootNoteId, scaleTypeId)
 
   return (
     <Grid.Row>
-      { triadsNotes.map(x =>
+      { scaleTriads.map(x =>
         <Grid.Column col="sm" py={1}
           key={`triad_root_${x.rootNote.id}`}>
 

@@ -7,7 +7,7 @@ import NoteName from '../Notes/NoteName'
 export default ({ rootNoteId, onClick }) => {
   const rootNote = ROOT_NOTES.find(x => x.id === rootNoteId)
   return (
-    <Button context="secondary" mr={3} onClick={() => onClick()}>
+    <Button context="secondary" mr={3} onClick={() => onClick()} rounded={0}>
       <Heading priority={1} mb={0}>
         <NoteName note={rootNote} />
       </Heading>

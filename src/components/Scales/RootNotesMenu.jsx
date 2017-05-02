@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { ROOT_NOTES } from '../../constants/scales'
 import * as notes from '../../functions/notes'
-import Div from '../Common/Div'
+import Heading from '../Common/Heading'
 import ButtonGroup from '../Common/ButtonGroup'
 import Button from '../Common/Button'
 import Collapse from '../Common/Collapse'
@@ -13,19 +13,22 @@ const RootNotesMenu = ({ id, show, rootNoteId, onNoteChange, onHide }) => {
 
   return (
     <Collapse id={id} show={show}>
-      <Card d="inline-block" mt={3}>
+      <Card d="inline-block" mt={1} rounded={0}>
         <Card.Block p={3}>
+          <Card.Title>
+            <Heading priority={6} d="inline-block" mr={2}>
+              Select root note
+            </Heading>
+            <Button context="secondary" onClick={() => onHide()} size="sm">
+              Done
+            </Button>
+          </Card.Title>
           { notes.selectDistinctEnharmonicIds(ROOT_NOTES).map((x) =>
             <RootEnharmonicNoteGroup enharmonicId={x}
               onClick={onNoteChange}
               rootNoteId={rootNoteId}
               key={`root_note_item_${x}`} />
           )}
-          <Div mt={2}>
-            <Button context="secondary" onClick={() => onHide()}>
-              Done
-            </Button>
-          </Div>
         </Card.Block>
       </Card>
     </Collapse>
@@ -60,11 +63,13 @@ const RootNoteButton = ({ note, onClick, rootNoteId }) => {
     // return true if this is the last note in the enharmonoc group
     : note === enharmonicNotes[enharmonicNotes.length - 1]
 
-  const disabled = rootNoteId == note.id
-  const context = disabled ? 'success' : 'primary'
+  const isSelectedRootNote = rootNoteId == note.id
+  const disabled = isSelectedRootNote
+  const className = isSelectedRootNote ? 'active' : undefined
+  const context = 'primary'
   const mr = isLastButtonInGroup ? 2 : undefined
   const buttonProps = {
-    disabled, context, mr, mt: 1,
+    disabled, context, mr, mt: 1, className,
     onClick: () => onClick(note.id)
   }
 

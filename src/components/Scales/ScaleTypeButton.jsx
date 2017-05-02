@@ -4,7 +4,7 @@ import Heading from '../Common/Heading'
 
 export default ({ scaleTypeId, onClick }) => {
   return (
-    <Button context="secondary" mr={3} onClick={() => onClick()}>
+    <Button context="secondary" mr={3} onClick={() => onClick()} rounded={0}>
       <Heading priority={1} mb={0}>
         { scaleTypeId }
       </Heading>

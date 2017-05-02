@@ -1,4 +1,6 @@
+import * as SCALES from '../constants/scales'
 import * as TRIADS from '../constants/triads'
+import * as scales from './scales'
 
 export const findTriadIntervalsForScaleNotes = scaleNotes => (
   scaleNotes.map(x =>
@@ -35,4 +37,26 @@ export const findTriadNotesForScaleNote = (scaleNotes, noteIndex) => {
     scaleNotes[thirdNoteIndex].note
   ]
   return triadNotes
+}
+
+export const buildTriads = (rootNoteId, scaleTypeId, excludeHalfStepsFromRoot = []) => {
+  const scaleType = SCALES.TYPES.find(x => x.id === scaleTypeId)
+  if (scaleType.triadsScaleType) {
+    return buildTriads(rootNoteId, scaleType.triadsScaleType.id,
+      scaleType.triadsScaleType.excludeHalfStepsFromRoot)
+  }
+  const scaleNotes = scales.buildScale(rootNoteId, scaleTypeId)
+  const triads = []
+  for (let noteIndex in scaleNotes) {
+    const scaleNote = scaleNotes[noteIndex]
+    if (excludeHalfStepsFromRoot.indexOf(scaleNote.interval.halfStepsFromRoot) > -1) {
+      continue
+    }
+    const triadNotes = findTriadNotesForScaleNote(scaleNotes, noteIndex)
+    const triadType = findTriadTypeForScaleNotes(triadNotes)
+    triads.push({
+      triadType, notes: triadNotes, rootNote: triadNotes[0]
+    })
+  }
+  return triads
 }

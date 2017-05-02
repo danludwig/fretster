@@ -62,7 +62,7 @@ class ScalesIndexPage extends Component {
         <Grid.Row mt={3}>
           <Grid.Column>
             <Heading priority={2}>
-              Scale Notes
+              Notes
             </Heading>
           </Grid.Column>
         </Grid.Row>
@@ -82,11 +82,13 @@ class ScalesIndexPage extends Component {
         <Grid.Row mt={3}>
           <Grid.Column>
             <Heading priority={2}>
-              Scale Triads (Chords)
+              Triads
             </Heading>
           </Grid.Column>
         </Grid.Row>
         <TriadsGridRow rootNoteId={rootNoteId} scaleTypeId={scaleTypeId} />
+        {/*
+        */}
       </Grid>
     )
   }

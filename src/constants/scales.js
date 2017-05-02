@@ -20,32 +20,84 @@ export const MAJOR = {
   intervals: [
     {
       halfStepsFromRoot: 0,
+      noteLettersFromRoot: 0,
       interval: 'Root'
     },
     {
       halfStepsFromRoot: 2,
+      noteLettersFromRoot: 1,
       interval: '2nd'
     },
     {
       halfStepsFromRoot: 4,
+      noteLettersFromRoot: 2,
       interval: '3rd'
     },
     {
       halfStepsFromRoot: 5,
+      noteLettersFromRoot: 3,
       interval: '4th'
     },
     {
       halfStepsFromRoot: 7,
+      noteLettersFromRoot: 4,
       interval: '5th'
     },
     {
       halfStepsFromRoot: 9,
+      noteLettersFromRoot: 5,
       interval: '6th'
     },
     {
       halfStepsFromRoot: 11,
+      noteLettersFromRoot: 6,
       interval: '7th'
     },
+  ]
+}
+
+export const MAJOR_PENTATONIC = {
+  id: 'Major Pentatonic',
+  triadsScaleType: {
+    id: MAJOR.id,
+    excludeHalfStepsFromRoot: [5, 11]
+  },
+  intervals: [
+    {
+      halfStepsFromRoot: 0,
+      noteLettersFromRoot: 0,
+      interval: 'Root'
+    },
+    {
+      halfStepsFromRoot: 2,
+      noteLettersFromRoot: 1,
+      interval: '2nd'
+    },
+    {
+      halfStepsFromRoot: 4,
+      noteLettersFromRoot: 2,
+      interval: '3rd'
+    },
+    // {
+    //   halfStepsFromRoot: 5,
+    //   noteLettersFromRoot: 3,
+    //   interval: '4th'
+    // },
+    {
+      halfStepsFromRoot: 7,
+      noteLettersFromRoot: 4,
+      interval: '5th'
+    },
+    {
+      halfStepsFromRoot: 9,
+      noteLettersFromRoot: 5,
+      interval: '6th'
+    },
+    // {
+    //   halfStepsFromRoot: 11,
+    //   noteLettersFromRoot: 6,
+    //   interval: '7th'
+    // },
   ]
 }
 
@@ -54,35 +106,77 @@ export const MINOR = {
   intervals: [
     {
       halfStepsFromRoot: 0,
+      noteLettersFromRoot: 0,
       interval: 'Root'
     },
     {
       halfStepsFromRoot: 2,
+      noteLettersFromRoot: 1,
       interval: '2nd'
     },
     {
       halfStepsFromRoot: 3,
+      noteLettersFromRoot: 2,
       interval: 'Minor 3rd'
     },
     {
       halfStepsFromRoot: 5,
+      noteLettersFromRoot: 3,
       interval: '4th'
     },
     {
       halfStepsFromRoot: 7,
+      noteLettersFromRoot: 4,
       interval: '5th'
     },
     {
       halfStepsFromRoot: 8,
+      noteLettersFromRoot: 5,
       interval: 'Minor 6th'
     },
     {
       halfStepsFromRoot: 10,
+      noteLettersFromRoot: 6,
+      interval: 'Minor 7th'
+    },
+  ]
+}
+
+export const MINOR_PENTATONIC = {
+  id: 'Minor Pentatonic',
+  triadsScaleType: {
+    id: MINOR.id,
+    excludeHalfStepsFromRoot: [2, 8]
+  },
+  intervals: [
+    {
+      halfStepsFromRoot: 0,
+      interval: 'Root',
+      noteLettersFromRoot: 0,
+    },
+    {
+      halfStepsFromRoot: 3,
+      noteLettersFromRoot: 2,
+      interval: 'Minor 3rd'
+    },
+    {
+      halfStepsFromRoot: 5,
+      noteLettersFromRoot: 3,
+      interval: '4th'
+    },
+    {
+      halfStepsFromRoot: 7,
+      noteLettersFromRoot: 4,
+      interval: '5th'
+    },
+    {
+      halfStepsFromRoot: 10,
+      noteLettersFromRoot: 6,
       interval: 'Minor 7th'
     },
   ]
 }
 
 export const TYPES = [
-  MAJOR, MINOR
+  MAJOR, MAJOR_PENTATONIC, MINOR, MINOR_PENTATONIC
 ]

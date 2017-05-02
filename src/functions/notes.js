@@ -8,10 +8,3 @@ export const selectDistinctEnharmonicIds = notesArray => {
 export const selectNotesByEnharmonicId = (notesArray, note) => {
   return notesArray.filter(x => x.enharmonicId === (note.enharmonicId || note))
 }
-
-export const computeNextNoteLetter = lastLetter => {
-  const nextLetterIndex = (NOTES.LETTERS.findIndex(x => x === lastLetter) + 1)
-    % NOTES.LETTERS.length
-  const nextLetter = NOTES.LETTERS[nextLetterIndex]
-  return nextLetter
-}
