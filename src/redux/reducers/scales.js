@@ -6,6 +6,7 @@ const defaultState = {
   scaleTypeId: 'Major',
   isRootNotesMenuOpen: false,
   isScaleTypesMenuOpen: false,
+  isScaleFinderMenuOpen: true,
 }
 
 const scales = createReducer({
@@ -33,6 +34,6 @@ const scales = createReducer({
   [actions.toggleScaleTypesMenu]: (state) => ({
     ...state, isScaleTypesMenuOpen: !state.isScaleTypesMenuOpen,
   }),
-}, defaultState);
+}, defaultState)
 
-export default scales;
+export default scales

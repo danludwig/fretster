@@ -16,6 +16,12 @@ export const DIMINISHED = {
   intervals: [0, 3, 6]
 }
 
+export const AUGMENTED = {
+  id: 'Augmented',
+  suffix: 'aug',
+  intervals: [0, 4, 8]
+}
+
 export const TYPES = [
-  MAJOR, MINOR, DIMINISHED
+  MAJOR, MINOR, DIMINISHED, AUGMENTED
 ]
