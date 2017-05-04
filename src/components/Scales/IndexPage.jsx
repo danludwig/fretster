@@ -7,6 +7,7 @@ import RootNoteButton from './RootNoteButton'
 import RootNotesMenu from './RootNotesMenu'
 import ScaleTypeButton from './ScaleTypeButton'
 import ScaleTypesMenu from './ScaleTypesMenu'
+import ScaleFinderMenu from './ScaleFinderMenu'
 import TriadsGridRow from './TriadsGridRow'
 import NoteName from '../Notes/NoteName'
 import Grid from '../Common/Grid'
@@ -25,9 +26,12 @@ class ScalesIndexPage extends Component {
   render() {
 
     const { rootNoteId, isRootNotesMenuOpen, changeScaleRoot,
-      toggleRootNotesMenu, hideRootNotesMenu,
+      toggleRootNotesMenu, hideRootNotesMenu, changeScale,
       scaleTypeId, isScaleTypesMenuOpen, changeScaleType,
-      toggleScaleTypesMenu, hideScaleTypesMenu
+      toggleScaleTypesMenu, hideScaleTypesMenu,
+      isScaleFinderMenuOpen, showScaleFinderMenu, hideScaleFinderMenu,
+      toggleScaleFinderMenu, selectScaleFinderEnharmonicId,
+      deselectScaleFinderEnharmonicId, scaleFinderSelectedEnharmonicIds
     } = this.props
 
     const scaleNotes = scales.buildScale(rootNoteId, scaleTypeId)
@@ -42,7 +46,7 @@ class ScalesIndexPage extends Component {
               <ScaleTypeButton scaleTypeId={scaleTypeId}
                 onClick={toggleScaleTypesMenu} />
             </ButtonToolbar>
-            <Button context="primary">
+            <Button context="primary" onClick={() => toggleScaleFinderMenu()}>
               Find scale
             </Button>
             <RootNotesMenu
@@ -56,6 +60,14 @@ class ScalesIndexPage extends Component {
               scaleTypeId={scaleTypeId}
               onHide={hideScaleTypesMenu}
               onScaleChange={changeScaleType}
+            />
+            <ScaleFinderMenu
+              show={isScaleFinderMenuOpen}
+              onHide={hideScaleFinderMenu}
+              selectedEnarmonicIds={scaleFinderSelectedEnharmonicIds}
+              onSelectEnharmonicId={selectScaleFinderEnharmonicId}
+              onDeselectEnharmonicId={deselectScaleFinderEnharmonicId}
+              onChangeScale={changeScale}
             />
           </Grid.Column>
         </Grid.Row>

@@ -6,7 +6,8 @@ const defaultState = {
   scaleTypeId: 'Major',
   isRootNotesMenuOpen: false,
   isScaleTypesMenuOpen: false,
-  isScaleFinderMenuOpen: true,
+  isScaleFinderMenuOpen: false,
+  scaleFinderSelectedEnharmonicIds: [],
 }
 
 const scales = createReducer({
@@ -25,6 +26,9 @@ const scales = createReducer({
   [actions.changeScaleType]: (state, scaleTypeId) => ({
     ...state, scaleTypeId,
   }),
+  [actions.changeScale]: (state, { rootNoteId, scaleTypeId }) => ({
+    ...state, rootNoteId, scaleTypeId
+  }),
   [actions.showScaleTypesMenu]: (state) => ({
     ...state, isScaleTypesMenuOpen: true,
   }),
@@ -34,6 +38,38 @@ const scales = createReducer({
   [actions.toggleScaleTypesMenu]: (state) => ({
     ...state, isScaleTypesMenuOpen: !state.isScaleTypesMenuOpen,
   }),
+  [actions.showScaleFinderMenu]: (state) => ({
+    ...state, isScaleFinderMenuOpen: true,
+  }),
+  [actions.hideScaleFinderMenu]: (state) => ({
+    ...state, isScaleFinderMenuOpen: false,
+  }),
+  [actions.toggleScaleFinderMenu]: (state) => ({
+    ...state, isScaleFinderMenuOpen: !state.isScaleFinderMenuOpen,
+  }),
+  [actions.selectScaleFinderEnharmonicId]: (state, enharmonicId) => {
+    const last = state.scaleFinderSelectedEnharmonicIds
+    last.push(enharmonicId)
+    const scaleFinderSelectedEnharmonicIds = last
+      .filter((value, index, self) => self.indexOf(value) === index)
+      .sort()
+    return {
+      ...state,
+      scaleFinderSelectedEnharmonicIds
+    }
+  },
+  [actions.deselectScaleFinderEnharmonicId]: (state, enharmonicId) => {
+    const last = state.scaleFinderSelectedEnharmonicIds
+    const scaleFinderSelectedEnharmonicIds = []
+    for (let id of last) {
+      if (id !== enharmonicId) scaleFinderSelectedEnharmonicIds.push(id)
+    }
+    scaleFinderSelectedEnharmonicIds.sort()
+    return {
+      ...state,
+      scaleFinderSelectedEnharmonicIds
+    }
+  },
 }, defaultState)
 
 export default scales

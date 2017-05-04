@@ -15,6 +15,9 @@ export const toggleRootNotesMenu = createAction(
 export const changeScaleType = createAction(
   'scales.changeScaleType', scaleTypeId => (scaleTypeId))
 
+export const changeScale = createAction(
+  'scales.changeScale', (rootNoteId, scaleTypeId) => ({rootNoteId, scaleTypeId}))
+
 export const showScaleTypesMenu = createAction(
   'scales.showScaleTypesMenu')
 
@@ -23,3 +26,18 @@ export const hideScaleTypesMenu = createAction(
 
 export const toggleScaleTypesMenu = createAction(
   'scales.toggleScaleTypesMenu')
+
+export const showScaleFinderMenu = createAction(
+  'scales.showScaleFinderMenu')
+
+export const hideScaleFinderMenu = createAction(
+  'scales.hideScaleFinderMenu')
+
+export const toggleScaleFinderMenu = createAction(
+  'scales.toggleScaleFinderMenu')
+
+export const selectScaleFinderEnharmonicId = createAction(
+  'scales.selectScaleFinderEnharmonicId', enharmonicId => (enharmonicId))
+
+export const deselectScaleFinderEnharmonicId = createAction(
+  'scales.deselectScaleFinderEnharmonicId', enharmonicId => (enharmonicId))

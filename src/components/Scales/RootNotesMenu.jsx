@@ -60,7 +60,7 @@ const RootNoteButton = ({ note, onClick, rootNoteId }) => {
     // return true if this is the note across all groups
     ? note !== ROOT_NOTES[ROOT_NOTES.length - 1]
     // otherwise, when there is more than 1 note in the enharmonic group,
-    // return true if this is the last note in the enharmonoc group
+    // return true if this is the last note in the enharmonic group
     : note === enharmonicNotes[enharmonicNotes.length - 1]
 
   const isSelectedRootNote = rootNoteId == note.id

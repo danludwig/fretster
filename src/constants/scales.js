@@ -15,6 +15,21 @@ export const ROOT_NOTES = [
   NOTES.B,
 ]
 
+export const FINDER_NOTES = [
+  NOTES.C,
+  NOTES.C_SHARP, NOTES.D_FLAT,
+  NOTES.D,
+  NOTES.D_SHARP, NOTES.E_FLAT,
+  NOTES.E,
+  NOTES.F,
+  NOTES.F_SHARP, NOTES.G_FLAT,
+  NOTES.G,
+  NOTES.G_SHARP, NOTES.A_FLAT,
+  NOTES.A,
+  NOTES.A_SHARP, NOTES.B_FLAT,
+  NOTES.B,
+]
+
 export const MAJOR = {
   id: 'Major',
   intervals: [
