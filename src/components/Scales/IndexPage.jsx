@@ -16,6 +16,7 @@ import ButtonToolbar from '../Common/ButtonToolbar'
 import Heading from '../Common/Heading'
 import Card from '../Common/Card'
 import Div from '../Common/Div'
+import ScaleNotes from './ScaleNotes'
 
 const mapStateToProps = ({ scales }) => (scales)
 const mapDispatchToProps = dispatch =>
@@ -79,17 +80,9 @@ class ScalesIndexPage extends Component {
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
-          { scaleNotes.map(x =>
-            <Grid.Column col="sm" py={1}
-              key={`scale_note_${x.interval.halfStepsFromRoot}`}>
-              <Div rounded="circle" p={2} d="inline-block" className="bg-success text-white"
-                style={{width: '48px', height: '48px'}}>
-                <Heading priority={3} mb={0} style={{lineHeight: '1.15'}} className="text-center">
-                  <NoteName note={x.note} />
-                </Heading>
-              </Div>
-            </Grid.Column>
-          )}
+          <Grid.Column>
+            <ScaleNotes rootNoteId={rootNoteId} scaleTypeId={scaleTypeId} />
+          </Grid.Column>
         </Grid.Row>
         <Grid.Row mt={3}>
           <Grid.Column>
@@ -99,8 +92,6 @@ class ScalesIndexPage extends Component {
           </Grid.Column>
         </Grid.Row>
         <TriadsGridRow rootNoteId={rootNoteId} scaleTypeId={scaleTypeId} />
-        {/*
-        */}
       </Grid>
     )
   }

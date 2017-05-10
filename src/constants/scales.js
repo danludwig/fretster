@@ -30,6 +30,72 @@ export const FINDER_NOTES = [
   NOTES.B,
 ]
 
+export const CHROMATIC = {
+  id: 'Chromatic',
+  intervals: [
+    {
+      halfStepsFromRoot: 0,
+      noteLettersFromRoot: 0,
+      interval: 'Root'
+    },
+    {
+      halfStepsFromRoot: 1,
+      noteLettersFromRoot: 1,
+      interval: 'Minor 2nd'
+    },
+    {
+      halfStepsFromRoot: 2,
+      noteLettersFromRoot: 1,
+      interval: '2nd'
+    },
+    {
+      halfStepsFromRoot: 3,
+      noteLettersFromRoot: 2,
+      interval: 'Minor 3rd'
+    },
+    {
+      halfStepsFromRoot: 4,
+      noteLettersFromRoot: 2,
+      interval: '3rd'
+    },
+    {
+      halfStepsFromRoot: 5,
+      noteLettersFromRoot: 3,
+      interval: '4th'
+    },
+    {
+      halfStepsFromRoot: 6,
+      noteLettersFromRoot: 3,
+      interval: 'Tritone'
+    },
+    {
+      halfStepsFromRoot: 7,
+      noteLettersFromRoot: 4,
+      interval: '5th'
+    },
+    {
+      halfStepsFromRoot: 8,
+      noteLettersFromRoot: 4,
+      interval: 'Minor 6th'
+    },
+    {
+      halfStepsFromRoot: 9,
+      noteLettersFromRoot: 5,
+      interval: '6th'
+    },
+    {
+      halfStepsFromRoot: 10,
+      noteLettersFromRoot: 6,
+      interval: 'Minor 7th'
+    },
+    {
+      halfStepsFromRoot: 11,
+      noteLettersFromRoot: 6,
+      interval: '7th'
+    },
+  ]
+}
+
 export const MAJOR = {
   id: 'Major',
   intervals: [
@@ -207,7 +273,7 @@ export const BLUES = {
     {
       halfStepsFromRoot: 6,
       noteLettersFromRoot: 4,
-      interval: 'diminished 5th'
+      interval: 'Tritone'
     },
     {
       halfStepsFromRoot: 7,
